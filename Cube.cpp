@@ -127,6 +127,3 @@ glm::mat4 Cube::getModelMatrix(){
 }
 
 
-void Cube::funcionVCS() {
-
-}
