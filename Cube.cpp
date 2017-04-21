@@ -125,3 +125,8 @@ glm::mat4 Cube::getModelMatrix(){
     return _transform.GetModelMatrix();
 
 }
+
+
+void Cube::funcionVCS() {
+
+}

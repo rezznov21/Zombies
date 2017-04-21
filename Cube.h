@@ -29,6 +29,8 @@ public:
     void draw();
     glm::mat4 getModelMatrix();
 
+    void funcionVCS();
+
     Mesh _mesh;
     Camera _camera;
     ShaderProgram _shaderProgram;
