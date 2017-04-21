@@ -24,7 +24,7 @@ public:
     Cube();
     ~Cube();
 
-    void init();
+    void init(float speed, glm::vec2 positionGrid);
 
     void draw();
     glm::mat4 getModelMatrix();

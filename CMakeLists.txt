@@ -8,6 +8,6 @@ set(SOURCE_FILES Main.cpp Camera.cpp Camera.h Default.frag
         Shader.h ShaderProgram.cpp ShaderProgram.h Transform.cpp Transform.h DefaultTextured.frag
         DefaultTextured.vert PhongShading.frag PhongShading.vert DefaultTransform.vert Texture2D.cpp
         Texture2D.h smiley.jpeg crate.png floor.jpg pyramid.png pruebaLevel.txt Level.h Level.cpp Cube.h Cube.cpp SpriteBatch.h SpriteBatch.cpp Vertex.h ResourceManager.h TextureCache.h GLTexture.h ResourceManager.cpp
-        glass.png light_bricks.png red_bricks.png TextureCache.cpp ImageLoader.h ImageLoader.cpp)
+        glass.png light_bricks.png red_bricks.png TextureCache.cpp ImageLoader.h ImageLoader.cpp MainGame.h MainGame.cpp)
 add_executable(Zombies ${SOURCE_FILES})
 target_link_libraries(Zombies -lglut -lGL -lGLU -lGLEW -lIL)

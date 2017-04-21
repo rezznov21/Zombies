@@ -11,6 +11,7 @@
 #include <vector>
 #include "Level.h"
 #include "Cube.h"
+#include <random>
 
 Mesh _mesh;
 Mesh _mesh2;
@@ -19,16 +20,7 @@ Transform _transform;
 Texture2D _texture;
 
 Camera _camera;
-float timee;
-float timeY;
-bool rotando = true;
-bool iniciaDerecha = false;
-bool iniciaIzquierda = false;
-bool iniciaDerecha3 = false;
-bool iniciaIzquierda3 = false;
-bool estado2 = false;
-bool estado3 = false;
-bool estado1 = true;
+
 std::vector<Cube*> _cubes;
 std::vector<Level*> _levels;
 std::vector<std::string> stdMapa;
@@ -36,176 +28,9 @@ Cube* _cubito = new Cube();
 
 void Initialize()
 {
-//    std::vector<glm::vec3> positions;
-//    // Cara trasera
-//    positions.push_back(glm::vec3(-1.0f, -1.0f, -1.0));
-//    positions.push_back(glm::vec3(1.0f, -1.0f, -1.0f));
-//    positions.push_back(glm::vec3(1.0f, 1.0f, -1.0f));
-//    positions.push_back(glm::vec3(-1.0f, 1.0f, -1.0f));
-//    // Cara derecha
-//    positions.push_back(glm::vec3(1.0f, -1.0f, -1.0f));
-//    positions.push_back(glm::vec3(1.0f, -1.0f, 1.0f));
-//    positions.push_back(glm::vec3(1.0f, 1.0f, 1.0f));
-//    positions.push_back(glm::vec3(1.0f, 1.0f, -1.0f));
-//    // Cara frontal
-//    positions.push_back(glm::vec3(1.0f, -1.0f, 1.0f));
-//    positions.push_back(glm::vec3(-1.0f, -1.0f, 1.0f));
-//    positions.push_back(glm::vec3(-1.0f, 1.0f, 1.0f));
-//    positions.push_back(glm::vec3(1.0f, 1.0f, 1.0f));
-//    // Cara izquierda
-//    positions.push_back(glm::vec3(-1.0f, -1.0f, 1.0f));
-//    positions.push_back(glm::vec3(-1.0f, -1.0f, -1.0f));
-//    positions.push_back(glm::vec3(-1.0f, 1.0f, -1.0f));
-//    positions.push_back(glm::vec3(-1.0f, 1.0f, 1.0f));
-//    // Cara arriba
-//    positions.push_back(glm::vec3(-1.0f, 1.0f, -1.0f));
-//    positions.push_back(glm::vec3(1.0f, 1.0f, -1.0f));
-//    positions.push_back(glm::vec3(1.0f, 1.0f, 1.0f));
-//    positions.push_back(glm::vec3(-1.0f, 1.0f, 1.0f));
-//    // Cara abajo
-//    positions.push_back(glm::vec3(-1.0f, -1.0f, 1.0f));
-//    positions.push_back(glm::vec3(1.0f, -1.0f, 1.0f));
-//    positions.push_back(glm::vec3(1.0f, -1.0f, -1.0f));
-//    positions.push_back(glm::vec3(-1.0f, -1.0f, -1.0f));
 
+    //_cubito->init();
 
-
-
-    /*std::vector<glm::vec3> colors;
-    // Cara trasera
-    colors.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
-    colors.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
-    colors.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
-    colors.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
-    // Cara derecha
-    colors.push_back(glm::vec3(0.0f, 1.0f, 0.0f));
-    colors.push_back(glm::vec3(0.0f, 1.0f, 0.0f));
-    colors.push_back(glm::vec3(0.0f, 1.0f, 0.0f));
-    colors.push_back(glm::vec3(0.0f, 1.0f, 0.0f));
-    // Cara frontal
-    colors.push_back(glm::vec3(0.0f, 0.0f, 1.0f));
-    colors.push_back(glm::vec3(0.0f, 0.0f, 1.0f));
-    colors.push_back(glm::vec3(0.0f, 0.0f, 1.0f));
-    colors.push_back(glm::vec3(0.0f, 0.0f, 1.0f));
-    // Cara izquierda
-    colors.push_back(glm::vec3(1.0f, 0.0f, 1.0f));
-    colors.push_back(glm::vec3(1.0f, 0.0f, 1.0f));
-    colors.push_back(glm::vec3(1.0f, 0.0f, 1.0f));
-    colors.push_back(glm::vec3(1.0f, 0.0f, 1.0f));
-    // Cara arriba
-    colors.push_back(glm::vec3(0.0f, 1.0f, 1.0f));
-    colors.push_back(glm::vec3(0.0f, 1.0f, 1.0f));
-    colors.push_back(glm::vec3(0.0f, 1.0f, 1.0f));
-    colors.push_back(glm::vec3(0.0f, 1.0f, 1.0f));
-    // Cara abajo
-    colors.push_back(glm::vec3(0.3f, 0.5f, 0.7f));
-    colors.push_back(glm::vec3(0.3f, 0.5f, 0.7f));
-    colors.push_back(glm::vec3(0.3f, 0.5f, 0.7f));
-    colors.push_back(glm::vec3(0.3f, 0.5f, 0.7f));
-
-     */
-
-    /*
-    std::vector<glm::vec3> normals;
-    // Cara trasera
-    normals.push_back(glm::vec3(0.0f, 0.0f, -1.0f));
-    normals.push_back(glm::vec3(0.0f, 0.0f, -1.0f));
-    normals.push_back(glm::vec3(0.0f, 0.0f, -1.0f));
-    normals.push_back(glm::vec3(0.0f, 0.0f, -1.0f));
-    // Cara derecha
-    normals.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
-    normals.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
-    normals.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
-    normals.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
-    // Cara frontalt
-    normals.push_back(glm::vec3(0.0f, 0.0f, 1.0f));
-    normals.push_back(glm::vec3(0.0f, 0.0f, 1.0f));
-    normals.push_back(glm::vec3(0.0f, 0.0f, 1.0f));
-    normals.push_back(glm::vec3(0.0f, 0.0f, 1.0f));
-    // Cara izquierda
-    normals.push_back(glm::vec3(-1.0f, 0.0f, 0.0f));
-    normals.push_back(glm::vec3(-1.0f, 0.0f, 0.0f));
-    normals.push_back(glm::vec3(-1.0f, 0.0f, 0.0f));
-    normals.push_back(glm::vec3(-1.0f, 0.0f, 0.0f));
-    // Cara arriba
-    normals.push_back(glm::vec3(0.0f, 1.0f, 0.0f));
-    normals.push_back(glm::vec3(0.0f, 1.0f, 0.0f));
-    normals.push_back(glm::vec3(0.0f, 1.0f, 0.0f));
-    normals.push_back(glm::vec3(0.0f, 1.0f, 0.0f));
-    // Cara abajo
-    normals.push_back(glm::vec3(0.0f, -1.0f, 0.0f));
-    normals.push_back(glm::vec3(0.0f, -1.0f, 0.0f));
-    normals.push_back(glm::vec3(0.0f, -1.0f, 0.0f));
-    normals.push_back(glm::vec3(0.0f, -1.0f, 0.0f));
-
-     */
-
-//    std::vector<glm::vec2> texCoords;
-//    texCoords.push_back(glm::vec2(0.0f, 0.0f));
-//    texCoords.push_back(glm::vec2(1.0f, 0.0f));
-//    texCoords.push_back(glm::vec2(1.0f, 1.0f));
-//    texCoords.push_back(glm::vec2(0.0f, 1.0f));
-//    texCoords.push_back(glm::vec2(0.0f, 0.0f));
-//    texCoords.push_back(glm::vec2(1.0f, 0.0f));
-//    texCoords.push_back(glm::vec2(1.0f, 1.0f));
-//    texCoords.push_back(glm::vec2(0.0f, 1.0f));
-//    texCoords.push_back(glm::vec2(0.0f, 0.0f));
-//    texCoords.push_back(glm::vec2(1.0f, 0.0f));
-//    texCoords.push_back(glm::vec2(1.0f, 1.0f));
-//    texCoords.push_back(glm::vec2(0.0f, 1.0f));
-//    texCoords.push_back(glm::vec2(0.0f, 0.0f));
-//    texCoords.push_back(glm::vec2(1.0f, 0.0f));
-//    texCoords.push_back(glm::vec2(1.0f, 1.0f));
-//    texCoords.push_back(glm::vec2(0.0f, 1.0f));
-//    texCoords.push_back(glm::vec2(0.0f, 0.0f));
-//    texCoords.push_back(glm::vec2(1.0f, 0.0f));
-//    texCoords.push_back(glm::vec2(1.0f, 1.0f));
-//    texCoords.push_back(glm::vec2(0.0f, 1.0f));
-//    texCoords.push_back(glm::vec2(0.0f, 0.0f));
-//    texCoords.push_back(glm::vec2(1.0f, 0.0f));
-//    texCoords.push_back(glm::vec2(1.0f, 1.0f));
-//    texCoords.push_back(glm::vec2(0.0f, 1.0f));
-
-
-//    std::vector<unsigned int> indices{0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20, 21, 22, 20, 22, 23};
-//
-//
-//    _mesh.CreateMesh(24);
-//    _mesh.SetPositionAttribute(positions, GL_STATIC_DRAW, 0);
-    //_mesh.SetColorAttribute(colors, GL_STATIC_DRAW, 1);
-    //_mesh.SetNormalAttribute(normals, GL_STATIC_DRAW, 2);
-//    _mesh.SetTexCoordAttribute(texCoords, GL_STATIC_DRAW, 3);
-//    _mesh.SetIndices(indices, GL_STATIC_DRAW);
-
-
-//    _shaderProgram.CreateProgram();
-//    _shaderProgram.Activate();
-//    _shaderProgram.AttachShader("DefaultTextured.vert", GL_VERTEX_SHADER);
-//    _shaderProgram.AttachShader("DefaultTextured.frag", GL_FRAGMENT_SHADER);
-//    _shaderProgram.SetAttribute(0, "VertexPosition");
-//    _shaderProgram.SetAttribute(1, "VertexColor");
-//    _shaderProgram.SetAttribute(2, "VertexNormal");
-//    _shaderProgram.SetAttribute(3, "VertexTexCoord");
-//    _shaderProgram.LinkProgram();
-//    _shaderProgram.Deactivate();
-//
-//    _camera.SetPerspective(1.0f, 1000.0f, 60.0f, 1.0f);
-//    _camera.SetPosition(0.0f, 0.0f, -5.0f);
-//
-//    _texture.LoadTexture("crate.png");
-
-
-
-   /*_shaderProgram.Activate();
-    //_shaderProgram.SetUniformf("iResolution", 400.0f, 400.0f);
-    _shaderProgram.SetUniformf("LightPosition", 0.0f, 3.0f, 5.0f);
-    _shaderProgram.SetUniformf("LightColor", 1.0f, 1.0f, 1.0f);
-    _shaderProgram.SetUniformf("CameraPosition", _camera.GetPosition().x, _camera.GetPosition().y, -_camera.GetPosition().z);
-    _shaderProgram.SetUniformi("DiffuseTexture", 0);
-    _shaderProgram.Deactivate();
-    */
-    _cubito->init();
-    timee = 0.0f;
     //_transform.SetPosition(1.0f, 0.0f, 0.0f);
 
     _shaderProgram.CreateProgram();
@@ -222,6 +47,24 @@ void Initialize()
     _camera.SetPerspective(1.0f, 1000.0f, 60.0f, 1.0f);
     _camera.SetPosition(1.0f, 0.0f, -50.0f);
 
+    std::mt19937 randomEngine;
+    randomEngine.seed(time(nullptr));
+    std::random_device rd;  //Will be used to obtain a seed for the random number engine
+    std::mt19937 gen(rd());//Standard mersenne_twister_engine seeded with rd()
+
+    std::uniform_int_distribution<int> randX(2, 20);
+    std::uniform_int_distribution<int> randY(2, 20);
+
+    
+
+    for (int i = 0; i < 10; i++){
+
+        _cubes.push_back(new Cube);
+        glm::vec2 pos(randX(gen), randY(gen));
+        std::cout << "la posicion de x: " << pos.x << std::endl;
+        _cubes.back()->init(2.0f, pos);
+
+    }
 
 
 
@@ -249,14 +92,6 @@ void Idle()
     glutPostRedisplay();
 }
 
-
-void IniciaRotacion(){
-
-    _transform.SetRotation(timee, timee, timee);
-
-}
-
-
 void GameLoop()
 {
 
@@ -267,48 +102,17 @@ void GameLoop()
 
     glm::vec3 camPos = _camera.GetPosition();
 
-    //_levels.front()->draw();
     _shaderProgram.Activate();
 
-//    _texture.Bind();
-//    glActiveTexture(GL_TEXTURE0);
 
-    _shaderProgram.SetUniformMatrix("mvpMatrix", _camera.GetViewProjection() * _cubito->getModelMatrix());
+    //_shaderProgram.SetUniformMatrix("mvpMatrix", _camera.GetViewProjection() * _cubito->getModelMatrix());
 
-    _cubito->draw();
+    for(int i = 0; i < _cubes.size(); i++){
+        _shaderProgram.SetUniformMatrix("mvpMatrix", _camera.GetViewProjection() * _cubes[i]->getModelMatrix());
 
-    timee += 0.005f;
-    timeY += 0.005f;
-//    if (timee >= 360)
-//        timee = 0;
-//    if (timeY >= 360)
-//        timee = 0;
-//
-//    if(estado1){
-//        _transform.SetRotation(0.0f, timeY, 0.0f);
-//
-//    }
-//    if(iniciaDerecha && estado2){
-//
-//    }
-//    if(iniciaIzquierda && estado2){
-//
-//    }
-//    if(iniciaDerecha3 && estado3){
-//        _transform.SetRotation(0.0f,timeY,0.0f);
-//    }
-//    if(iniciaIzquierda3 && estado3){
-//        _transform.SetRotation(0.0f,-timeY,0.0f);
-//    }
-//
-//    _shaderProgram.SetUniformMatrix("ModelMatrix", _transform.GetModelMatrix());
-//    _shaderProgram.SetUniformMatrix("NormalMatrix", glm::mat3(glm::transpose(glm::inverse(_transform.GetModelMatrix()))));
-//    _shaderProgram.SetUniformMatrix("mvpMatrix", _camera.GetViewProjection() * _transform.GetModelMatrix());
-//    _mesh.Draw(GL_TRIANGLES);
-
-    //_texture.Unbind();
-    //_transform.SetPosition(-1.0f, 0.0f, 0.0f);
-
+        _cubes[i]->draw();
+    }
+    //_cubito->draw();
 
    _shaderProgram.Deactivate();
 
@@ -332,35 +136,6 @@ void Keyboard(unsigned char key, int x, int y){
     if(key == 'a') {
         _camera.MoveRight(-0.1f, false);
     }
-    if(key == '1'){
-        estado1 = true;
-        rotando = true;
-        /*iniciaDerecha =false;
-        iniciaIzquierda =false;
-        iniciaDerecha3 = false;
-        iniciaIzquierda3 = false;*/
-        estado2 = false;
-        estado3 = false;
-    }
-    if(key == '2'){
-        rotando = false;
-        estado2 = true;
-        estado3 = false;
-        estado1 =  false;
-
-    }if (key == '3'){
-        estado3 = true;
-        rotando = false;
-        estado2 = false;
-        estado1 = false;
-    }if(key == '4'){
-        //Crea();
-        std::cout << "Se creo un cubo" << std::endl;
-
-
-        //index++;
-    }
-
 
 }
 
@@ -375,31 +150,10 @@ void SpecialKeys(int key, int x, int y){
         _transform.MoveForward(-0.1f, true);
     }
     if(key == GLUT_KEY_RIGHT){
-        if(estado2) {
-            _transform.SetRotation(0.0f, timeY, 0.0f);
-            iniciaDerecha = true;
-            iniciaIzquierda = false;
-        }
-        //_transform3.SetRotation(0.0f,timeY,0.0f);
 
-        if(estado3){
-
-            iniciaDerecha3 = true;
-            iniciaIzquierda3 = false;
-        }
     }
     if(key == GLUT_KEY_LEFT){
-        if(estado2) {
-            _transform.SetRotation(0.0f, -timeY, 0.0f);
-            iniciaIzquierda = true;
-            iniciaDerecha = false;
-        }
-        //_transform3.SetRotation(0.0f,-timeY,0.0f);
-        if(estado3){
 
-            iniciaIzquierda3 = true;
-            iniciaDerecha3 = false;
-        }
     }
 
 
